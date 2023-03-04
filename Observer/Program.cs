@@ -78,7 +78,6 @@ class Subject : ISubject
     }
 }
 
-// Define the observer class
 class Observer : IObserver
 {
     private string name;
