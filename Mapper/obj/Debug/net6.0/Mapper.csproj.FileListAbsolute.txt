@@ -1,0 +1,15 @@
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.csproj.AssemblyReference.cache
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.GeneratedMSBuildEditorConfig.editorconfig
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.AssemblyInfoInputs.cache
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.AssemblyInfo.cs
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.csproj.CoreCompileInputs.cache
+H:\Projects\Design_Patterns\Mapper\bin\Debug\net6.0\Mapper.exe
+H:\Projects\Design_Patterns\Mapper\bin\Debug\net6.0\Mapper.deps.json
+H:\Projects\Design_Patterns\Mapper\bin\Debug\net6.0\Mapper.runtimeconfig.json
+H:\Projects\Design_Patterns\Mapper\bin\Debug\net6.0\Mapper.dll
+H:\Projects\Design_Patterns\Mapper\bin\Debug\net6.0\Mapper.pdb
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.dll
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\refint\Mapper.dll
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.pdb
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\Mapper.genruntimeconfig.cache
+H:\Projects\Design_Patterns\Mapper\obj\Debug\net6.0\ref\Mapper.dll
