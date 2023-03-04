@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Create the subject and attach observers
+﻿// Create the subject
 Subject subject = new Subject();
 Console.WriteLine("");
 
+// Create Observers
 Observer observer1 = new Observer("Observer 1");
 Observer observer2 = new Observer("Observer 2");
 Console.WriteLine("");
 
+// Attach observers to the subject
 subject.Attach(observer1);
 subject.Attach(observer2);
 Console.WriteLine("");
@@ -26,7 +25,6 @@ Console.WriteLine("");
 Console.WriteLine("Changing the subject's state to 2...");
 subject.State = 2;
 
-// Define the subject interface
 interface ISubject
 {
     void Attach(IObserver observer);
@@ -35,13 +33,11 @@ interface ISubject
 	int State {get;set;}
 }
 
-// Define the observer interface
 interface IObserver
 {
     void Update(ISubject subject);
 }
 
-// Define the subject class
 class Subject : ISubject
 {
     private List<IObserver> observers = new List<IObserver>();
