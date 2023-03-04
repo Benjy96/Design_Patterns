@@ -9,6 +9,8 @@ A branch can also store something like a name/colour, but ALSO other branches or
 - GUI (form within a form)
 - file structures: ISystemObject could enable a Folder to contain files
 - teams: IUnit could enable a company, department, sector, team, and sprint team
+
+Essentially, the benefit is that the INode interface means you can traverse the entire structure, some of which has more or less information.
 */
 
 public interface INode
