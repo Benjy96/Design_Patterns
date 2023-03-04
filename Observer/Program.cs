@@ -1,4 +1,13 @@
-﻿// Create the subject
+﻿/**
+Flow:
+1. Attach IObservers (updatable) to an ISubject (notifier, state-holding, attachable to & detachable from), which may store the IObservers in a list etc
+2. Make a change to an ISubject
+3. ISubject can loop through attached Observers and call their Update method, as they are Updatable, as required by IObserver interface
+4. Observers' Update() methods are called, and they can do whatever.
+*/
+
+
+// Create the subject
 Subject subject = new Subject();
 Console.WriteLine("");
 
@@ -22,22 +31,26 @@ Console.WriteLine("");
 
 subject.State = 2;
 
+// Enforces ways to subscribe/unsubscribe observers, a way to notify them, and the thing (state) they will care about
 interface ISubject
 {
     void Attach(IObserver observer);
     void Detach(IObserver observer);
     void Notify();
-	int State {get;set;}
+    int State{get;set;}
 }
 
+// Enforces a way to be updated by a Subject
 interface IObserver
 {
     void Update(ISubject subject);
 }
 
+// Has a list of Observers and a State. 
+// When setting state, calls Notify, which can call the Observers' Update because of their IObserver interface, ensuring they are updatable.
 class Subject : ISubject
 {
-    private List<IObserver> observers = new List<IObserver>();
+    public List<IObserver> observers = new List<IObserver>();
     private int state;
 	
 	public Subject()
