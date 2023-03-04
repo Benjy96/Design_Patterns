@@ -2,11 +2,16 @@
 A way to hold and choose between which functionality you use.
 Useful when multiple ways to do things, and the way you do it should differ depending on the context.
 
-Structure:
+Flow:
 - IDoXStrategy with a method enforcing implementers to implement "DoX"
 - Implementing "Strategy" classes, implementing "DoX" in their own way
 - Some code, which relies on the IDoXStrategy then, based on some logic, chooses which IDoXStrategy to use (inversion of control here too)
 - The calling code then calls IDoXStrategy.DoX(), using whichever IDoXStrategy implementer we injected
+
+Structure:
+- XContext 
+- IXStrategy
+- XStrategy : IXStrategy
 
 */
 
