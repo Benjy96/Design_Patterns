@@ -13,16 +13,13 @@ subject.Attach(observer2);
 Console.WriteLine("");
 
 // Change the subject's state and notify observers
-Console.WriteLine("Changing the subject's state to 1...");
 subject.State = 1;
 Console.WriteLine("");
 
 // Detach an observer and change the subject's state again
-Console.WriteLine($"Detaching {nameof(observer2)}..."); 
 subject.Detach(observer2);
 Console.WriteLine("");
 
-Console.WriteLine("Changing the subject's state to 2...");
 subject.State = 2;
 
 interface ISubject
@@ -53,6 +50,7 @@ class Subject : ISubject
         get { return state; }
         set
         {
+            Console.WriteLine($"Changing {nameof(Subject)}'s state to {value}");
             state = value;
             Notify();
         }
@@ -67,13 +65,16 @@ class Subject : ISubject
     public void Detach(IObserver observer)
     {
         observers.Remove(observer);
+		Console.WriteLine("Removed an observer");
     }
 
     public void Notify()
     {
         foreach (IObserver observer in observers)
         {
+            Console.WriteLine($"{nameof(Subject)} is notifying an observer...");
             observer.Update(this);
+            Console.WriteLine($"{nameof(Subject)} just notified an observer\n");
         }
     }
 }
