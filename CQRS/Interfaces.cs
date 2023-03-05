@@ -44,7 +44,7 @@ public interface IParticipant
 }
 
 /// <summary>
-/// Ensures implementer has a way to send messages to a chatroom
+/// Ensures implementer has a way to save/receive/output messages to a chatroom
 /// </summary>
 public interface IMessageWriter
 {
