@@ -25,15 +25,13 @@ public class Mediator : IMediator
         _handlers.AddHandler(commandHandler);
     }
 
-    public TReturn Send<TQuery, TReturn>(TQuery query)
-        where TQuery : IQuery<TReturn>
+    public TReturn Send<TQuery, TReturn>(TQuery query) where TQuery : IQuery<TReturn>
     {
         var handler = _handlers.Find<TQuery, TReturn>();
         return handler.Handle(query);
     }
 
-    public void Send<TCommand>(TCommand command)
-        where TCommand : ICommand
+    public void Send<TCommand>(TCommand command) where TCommand : ICommand
     {
         var handlers = _handlers.FindAll<TCommand>();
         foreach (var handler in handlers)
@@ -239,7 +237,7 @@ public class Participant : IParticipant
     }
 
     /// <summary>
-    /// Uses a message writing implementation to send a ChatMessage to an IChatRoom implementation
+    /// Uses a message writing implementation to do something with the message sent to a chatroom
     /// </summary>
     public void NewMessageReceivedFrom(IChatRoom chatRoom, ChatMessage message)
     {
