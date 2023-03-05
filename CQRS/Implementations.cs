@@ -110,14 +110,12 @@ public class Mediator : IMediator
 {
     private readonly HandlerDictionary _handlers = new();
 
-    public void Register<TCommand>(ICommandHandler<TCommand> commandHandler)
-        where TCommand : ICommand
+    public void Register<TCommand>(ICommandHandler<TCommand> commandHandler) where TCommand : ICommand
     {
         _handlers.AddHandler(commandHandler);
     }
 
-    public void Register<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> commandHandler)
-        where TQuery : IQuery<TReturn>
+    public void Register<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> commandHandler) where TQuery : IQuery<TReturn>
     {
         _handlers.AddHandler(commandHandler);
     }

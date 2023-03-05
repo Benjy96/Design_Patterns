@@ -1,5 +1,8 @@
 ﻿namespace CQRS;
 
+/// <summary>
+/// Ensures implementer has a way to Register clients & Send them messages
+/// </summary>
 public interface IMediator
 {
     TReturn Send<TQuery, TReturn>(TQuery query) where TQuery : IQuery<TReturn>;
@@ -8,12 +11,18 @@ public interface IMediator
     void Register<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> commandHandler) where TQuery : IQuery<TReturn>;
 }
 
+/// <summary>
+/// Ensures implementer has a way to send messages to a chatroom
+/// </summary>
 public interface IMessageWriter
 {
     void Write(IChatRoom chatRoom, ChatMessage message);
 }
 
 #region Chatroom
+/// <summary>
+/// Ensures join, leave, and messaging functionality
+/// </summary>
 public interface IParticipant
 {
     string Name { get; }
@@ -25,6 +34,9 @@ public interface IParticipant
     IEnumerable<ChatMessage> ListMessagesOf(IChatRoom chatRoom);
 }
 
+/// <summary>
+/// Ensures participant management and messaging functionality
+/// </summary>
 public interface IChatRoom
 {
     string Name { get; }

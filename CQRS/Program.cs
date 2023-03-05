@@ -43,11 +43,13 @@ public class ChatRoomTest
     public void A_participant_should_be_able_to_list_the_participants_that_joined_a_chatroom()
     {
         _bob.Join(_room1);
-        _bob.Join(_room2);
         _alice.Join(_room1);
+
+        _bob.Join(_room2);
         _numpty.Join(_room2);
 
         var room1Participants = _bob.ListParticipantsOf(_room1);
+        
         Assert.Collection(room1Participants,
             p => Assert.Same(_bob, p),
             p => Assert.Same(_alice, p)
