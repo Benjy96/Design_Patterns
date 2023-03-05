@@ -44,3 +44,6 @@ You could attack in multiple ways, so you make blueprint strategies:
 - AirAttack : IAttackStrategy
 
 Your code will work with any IAttackStrategy, and depending on the enemy's defenses, you can inject any type of attack class, since they will all implement attack.
+
+# TODO:
+- Doc comments on CQRS Mediator class
