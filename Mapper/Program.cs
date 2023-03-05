@@ -17,7 +17,7 @@ public class ProductMapper : IMapper<Product, ProductDetails>
     }
 }
 
-public record class ProductDetails(int Id, string Name, int QuantityInStock);
+public record class ProductDetails(int Id, string Name, int QuantityInStock);   // record is a reference-type with value-based equality (auto generates equality methods)
 public class Product 
 { 
     public int? Id {get;set;}
