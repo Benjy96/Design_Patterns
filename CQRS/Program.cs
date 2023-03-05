@@ -15,9 +15,9 @@ namespace CQRS.Tests;
 public class ChatRoomTest
 {
     private readonly IMediator _mediator = new Mediator();
-    private readonly TestMessageWriter _reagenMessageWriter = new();
-    private readonly TestMessageWriter _garnerMessageWriter = new();
-    private readonly TestMessageWriter _corneliaMessageWriter = new();
+    private readonly TestMessageWriter _bobMessageWriter = new();
+    private readonly TestMessageWriter _aliceMessageWriter = new();
+    private readonly TestMessageWriter _numptyMessageWriter = new();
 
     private readonly IChatRoom _room1 = new ChatRoom("Room 1");
     private readonly IChatRoom _room2 = new ChatRoom("Room 2");
@@ -34,9 +34,9 @@ public class ChatRoomTest
         _mediator.Register(new ListParticipants.Handler());
         _mediator.Register(new ListMessages.Handler());
 
-        _bob = new Participant(_mediator, "Bob", _reagenMessageWriter);
-        _alice = new Participant(_mediator, "Alice", _garnerMessageWriter);
-        _numpty = new Participant(_mediator, "Numpty", _corneliaMessageWriter);
+        _bob = new Participant(_mediator, "Bob", _bobMessageWriter);
+        _alice = new Participant(_mediator, "Alice", _aliceMessageWriter);
+        _numpty = new Participant(_mediator, "Numpty", _numptyMessageWriter);
     }
 
     [Fact]
@@ -81,7 +81,7 @@ public class ChatRoomTest
         _alice.Join(_room2);
         _bob.SendMessageTo(_room1, "Hello!");
 
-        Assert.Collection(_garnerMessageWriter.Output,
+        Assert.Collection(_aliceMessageWriter.Output,
             line =>
             {
                 Assert.Equal(_room1, line.chatRoom);
@@ -101,7 +101,7 @@ public class ChatRoomTest
         _alice.Leave(_room1);
         _bob.SendMessageTo(_room1, "This should not reach Garner");
 
-        Assert.Collection(_garnerMessageWriter.Output,
+        Assert.Collection(_aliceMessageWriter.Output,
             line =>
             {
                 Assert.Equal(_room1, line.chatRoom);
@@ -109,7 +109,7 @@ public class ChatRoomTest
                 Assert.Equal("Hello!", line.message.Message);
             }
         );
-        Assert.Collection(_corneliaMessageWriter.Output,
+        Assert.Collection(_numptyMessageWriter.Output,
             line =>
             {
                 Assert.Equal(_room1, line.chatRoom);
@@ -133,7 +133,7 @@ public class ChatRoomTest
         _alice.Join(_room2);
         _mediator.Send(new SendChatMessage.Command(_room1, new ChatMessage(_bob, "Hello!")));
 
-        Assert.Collection(_garnerMessageWriter.Output,
+        Assert.Collection(_aliceMessageWriter.Output,
             line =>
             {
                 Assert.Equal(_room1, line.chatRoom);
@@ -214,6 +214,9 @@ public class ChatRoomTest
         }
     }
 
+    /// <summary>
+    /// Stores Message & Chatroom pairs in a List
+    /// </summary>
     private class TestMessageWriter : IMessageWriter
     {
         public List<(IChatRoom chatRoom, ChatMessage message)> Output { get; } = new();
