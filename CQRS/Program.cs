@@ -8,6 +8,7 @@ Basically: Split requests into commands & queries
 Why bother? Separation of Concerns.
 */
 
+using System.Diagnostics;
 using Xunit;
 
 namespace CQRS.Tests;
@@ -223,6 +224,8 @@ public class ChatRoomTest
 
         public void Write(IChatRoom chatRoom, ChatMessage message)
         {
+            // TODO: Console output in test?
+            Console.WriteLine($"({nameof(TestMessageWriter)}) - ChatRoom {chatRoom}: {message}");
             Output.Add((chatRoom, message));
         }
     }
