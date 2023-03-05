@@ -238,11 +238,17 @@ public class Participant : IParticipant
         return _mediator.Send<ListParticipants.Query, IEnumerable<IParticipant>>(new ListParticipants.Query(chatRoom, this));
     }
 
+    /// <summary>
+    /// Uses a message writing implementation to send a ChatMessage to an IChatRoom implementation
+    /// </summary>
     public void NewMessageReceivedFrom(IChatRoom chatRoom, ChatMessage message)
     {
         _messageWriter.Write(chatRoom, message);
     }
 
+    /// <summary>
+    /// Uses a mediator to send a ChatMessage Command (modify state)
+    /// </summary>
     public void SendMessageTo(IChatRoom chatRoom, string message)
     {
         _mediator.Send(new SendChatMessage.Command(chatRoom, new ChatMessage(this, message)));
