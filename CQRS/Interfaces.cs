@@ -11,15 +11,24 @@ public interface IMediator
     void Register<TQuery, TReturn>(IQueryHandler<TQuery, TReturn> commandHandler) where TQuery : IQuery<TReturn>;
 }
 
+#region Chatroom
 /// <summary>
-/// Ensures implementer has a way to send messages to a chatroom
+/// Ensures participant management (Add/Remove/List) and messaging functionality (Add/List)
 /// </summary>
-public interface IMessageWriter
+public interface IChatRoom
 {
-    void Write(IChatRoom chatRoom, ChatMessage message);
+    string Name { get; }
+
+    // Participant related
+    void Add(IParticipant participant);
+    void Remove(IParticipant participant);
+    IEnumerable<IParticipant> ListParticipants();
+
+    // Message related
+    void Add(ChatMessage message);
+    IEnumerable<ChatMessage> ListMessages();
 }
 
-#region Chatroom
 /// <summary>
 /// Ensures join, leave, and messaging functionality
 /// </summary>
@@ -35,20 +44,11 @@ public interface IParticipant
 }
 
 /// <summary>
-/// Ensures participant management and messaging functionality
+/// Ensures implementer has a way to send messages to a chatroom
 /// </summary>
-public interface IChatRoom
+public interface IMessageWriter
 {
-    string Name { get; }
-
-    // Participant related
-    void Add(IParticipant participant);
-    void Remove(IParticipant participant);
-    IEnumerable<IParticipant> ListParticipants();
-
-    // Message related
-    void Add(ChatMessage message);
-    IEnumerable<ChatMessage> ListMessages();
+    void Write(IChatRoom chatRoom, ChatMessage message);
 }
 #endregion
 
@@ -72,7 +72,7 @@ public interface ICommandHandler<TCommand> where TCommand : ICommand
 /// <typeparam name="TReturn">Some type of state information</typeparam>
 public interface IQuery<TReturn> { }
 /// <summary>
-/// Ensures implementer is set up to handle any Query which returns something
+/// Ensures implementing handler is set up to handle some type of Query which returns something
 /// </summary>
 /// <typeparam name="TQuery">Type of query to take in</typeparam>
 /// <typeparam name="TReturn">Type of data to return</typeparam>
