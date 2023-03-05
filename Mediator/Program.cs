@@ -6,8 +6,11 @@ Useful for when you want to control the flow of information to certain classes, 
 Seems kinda similar to the Observer pattern (about informing people).
 Difference is in Observer, stakeholders subscribe (have control). With Mediator, mediator controls who messages go to.
 
-Observer -> stakeholders register themselves whenever, and get updated/messaged
-Mediator -> mediator chooses stakeholders, and updates/messages them
+Observer -> stakeholders register themselves whenever, and get updated/messaged when object itself has an event
+Mediator -> mediator chooses stakeholders, and updates/messages them when something tells mediator to signal others
+
+Observer: Notify subscribers on channel change.
+Mediator: Notify everyone else whenever anyone's channel changes.
 */
 
 
