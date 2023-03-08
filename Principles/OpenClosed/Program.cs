@@ -10,6 +10,7 @@ public class Program
         var target = new NinjaNoOCP.Ninja("The Unseen Mirage");
 
         ExecuteSequence(ninja, target);
+        
         Console.WriteLine("*** SEQUENCE 1 COMPLETE ***");
         Console.WriteLine("*** SEQUENCE 2 ***\n");
 
