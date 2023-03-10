@@ -42,6 +42,10 @@ public class AbstractFactoryTestBikes : AbstractFactoryBaseTestData
 }
 #endregion
 
+/// <summary>
+/// Essence of Factory is this: Consumer (tests in this case) doesn't need to know how to construct the objects -> notice no "Arrange"
+/// Majority of flexibility still comes from interfaces -> testing an interface allows much flexibility on implementations
+/// </summary>
 public class AbstractFactoryTest
 {
     [Theory]
